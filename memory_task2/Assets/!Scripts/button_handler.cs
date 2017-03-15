@@ -10,10 +10,13 @@ public class button_handler : MonoBehaviour, IVirtualButtonEventHandler {
 	//declaring game object
 	GameObject vbutton;
 	//declaring gamer's ID
-	int subject;
+	//transferring this task to timer.cs
+//	int subject;
 
-	IEnumerator Requests (string c, string toc, string comm) {
-		string url = "http://akshit.acslab.org/unity/accept.php?c=" + c + "&s=" + subject + "&toc=" + toc + "&comm=" + comm;
+	timer timer;
+
+	IEnumerator Requests_accept (string c, string toc, string comm) {
+		string url = "http://akshit.acslab.org/unity/accept.php?c=" + c + "&s=" + timer.subject + "&toc=" + (timer.totalTime - timer.timeLeft) + "&comm=" + comm;
 		Debug.Log (url);
 
 		WWW www = new WWW (url);
@@ -24,15 +27,19 @@ public class button_handler : MonoBehaviour, IVirtualButtonEventHandler {
 	}
 
 	void Start () {
+		timer = GetComponentInParent<timer> ();
 		//setting up ID of the person
-		subject = Convert.ToInt16(UnityEngine.Random.value * 10000); //we can replace this method of storing subjects later by adding more scenes if required.
+		//task transfer to timer.cs
+//		subject = Convert.ToInt16(UnityEngine.Random.value * 10000);
 		//initializing game object vbutton to the game object this component (script) is attached to
 		vbutton = gameObject;
 		//registering event handler with the virtualbuttonbehavior component of VirtualButton
 		vbutton.GetComponentInChildren<VirtualButtonBehaviour> ().RegisterEventHandler (this);
 		//sending a marker to server that memory task has started
-		string localDate1 = DateTime.Now.ToString();
-		StartCoroutine (Requests("GAME_INITIALIZED", localDate1, "starting up!"));
+
+		//incorporating this task to timer.cs to avoid multiple entries for 'starting up!'
+//		string localDate1 = DateTime.Now.ToString();
+//		StartCoroutine (Requests_accept("GAME_INITIALIZED", localDate1, "starting up!"));
 	}
 		
 	public void OnButtonPressed (VirtualButtonAbstractBehaviour vb) {
@@ -52,7 +59,7 @@ public class button_handler : MonoBehaviour, IVirtualButtonEventHandler {
 			frame.SetActive (false);
 			button.GetComponent<VirtualButtonBehaviour> ().VirtualButton.SetEnabled (false);
 			//start the procedure for website reporting.
-			StartCoroutine (Requests(capture, localDate, "captured"));
+			StartCoroutine (Requests_accept(capture, localDate, "captured"));
 		}
 	}
 }
