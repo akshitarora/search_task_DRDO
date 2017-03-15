@@ -8,6 +8,8 @@ if ($conn->connect_error) {
 	echo "connection failed"; die("Connection failed!");
 } 
 
+if ($_GET["s"] && $_GET["c"] && $_GET["toc"] && $_GET["comm"]) { //checking if all parameters have been passed in URL or not.
+
 $subject = $_GET["s"];
 $capture = $_GET["c"];
 $toc = $_GET["toc"];
@@ -30,6 +32,8 @@ $sql = "INSERT INTO memory_task (subject, capture, toc, comments) VALUES ('$subj
 
 if ($conn->query($sql) === TRUE) {
 	echo "You have captured: " . $_GET["c"];
+}
+
 }
 
 mysql_close($conn);
