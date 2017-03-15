@@ -7,12 +7,13 @@ using UnityEngine.SceneManagement;
 
 public class timer : MonoBehaviour {
 
-	public static int subject;
-	public static float totalTime = 600.0f;
-	public float timeLeft = totalTime;
+	public int subject;
+	public float totalTime = 5.0f;
+	public float timeLeft;
 
 	IEnumerator Requests_accept (string c, string toc, string comm) {
-		string url = "http://akshit.acslab.org/unity/accept.php?c=" + c + "&s=" + subject + "&toc=" + toc + "&comm=" + comm;
+		float time1 = totalTime - timeLeft;
+		string url = "http://akshit.acslab.org/unity/accept.php?c=" + c + "&s=" + subject + "&toc=" + toc + " " + (time1) + "&comm=" + comm;
 		Debug.Log (url);
 
 		WWW www = new WWW (url);
@@ -24,6 +25,7 @@ public class timer : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		timeLeft = totalTime;
 		string localDate1 = DateTime.Now.ToString();
 		subject = Convert.ToInt16(UnityEngine.Random.value * 10000);
 		StartCoroutine (Requests_accept("GAME_INITIALIZED", localDate1, "starting up!"));
@@ -32,10 +34,14 @@ public class timer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		timeLeft -= Time.deltaTime;
-		if (timeLeft < 0) {
-			string localDate1 = DateTime.Now.ToString();
-			StartCoroutine (Requests_accept("GAME_OVER", localDate1, "Game over!"));
-			SceneManager.LoadScene ("2");
+		float time1 = totalTime - timeLeft;
+		Debug.Log (time1);
+		if (timeLeft < 0.0f) {
+			//string localDate1 = DateTime.Now.ToString();
+			//StartCoroutine (Requests_accept("GAME_OVER", localDate1, "Game over!"));
+			Debug.Log ("Game over!");
+			SceneManager.LoadSceneAsync ("!Scenes/2");
+			Debug.Log ("Scene changed");
 		}	
 	}
 }

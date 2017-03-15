@@ -15,8 +15,10 @@ public class button_handler : MonoBehaviour, IVirtualButtonEventHandler {
 
 	timer timer;
 
+	//can use defining Requests_accept only once, either here or Requests_accept.
 	IEnumerator Requests_accept (string c, string toc, string comm) {
-		string url = "http://akshit.acslab.org/unity/accept.php?c=" + c + "&s=" + timer.subject + "&toc=" + (timer.totalTime - timer.timeLeft) + "&comm=" + comm;
+		float time1 = (timer.totalTime - timer.timeLeft);
+		string url = "http://akshit.acslab.org/unity/accept.php?c=" + c + "&s=" + timer.subject + "&toc=" + toc + " " + time1 + "&comm=" + comm;
 		Debug.Log (url);
 
 		WWW www = new WWW (url);
