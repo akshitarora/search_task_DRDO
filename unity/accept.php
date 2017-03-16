@@ -8,12 +8,15 @@ if ($conn->connect_error) {
 	echo "connection failed"; die("Connection failed!");
 } 
 
-if ($_GET["s"] && $_GET["c"] && $_GET["toc"] && $_GET["comm"]) { //checking if all parameters have been passed in URL or not.
+if ($_GET["s"] && $_GET["c"] && $_GET["toc"] && ($_GET["comm"] || $_POST["comm"])) { //checking if all parameters have been passed in URL or not.
 
 $subject = $_GET["s"];
 $capture = $_GET["c"];
 $toc = $_GET["toc"];
-$comments = $_GET["comm"];
+if($_GET["comm"])
+	$comments = $_GET["comm"];
+else 
+	$comments = $_POST["comm"];
 
 if($comments == "captured"){
 	if($capture == "10" || $capture == "2_MK12Sniper" || $capture == "3_M41AssaultRifle" || $capture == "19_magnetometersensor" || $capture == "20_NGIAma") {
@@ -28,7 +31,7 @@ if($comments == "captured"){
 	$capture = 2;
 }
 
-$sql = "INSERT INTO memory_task (subject, capture, toc, comments) VALUES ('$subject','$capture','$toc','$comments');";
+$sql = "INSERT INTO memory_task (subject, capture, toc, comments) VALUES ('$subject','$capture','" . $_GET["toc"] . "','" .$comments. "');";
 
 if ($conn->query($sql) === TRUE) {
 	echo "You have captured: " . $_GET["c"];
