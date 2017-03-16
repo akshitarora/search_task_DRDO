@@ -33,7 +33,7 @@ public class timer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		timeLeft -= Time.deltaTime;
+		timeLeft -= Time.deltaTime;	
 		float time1 = totalTime - timeLeft;
 		Debug.Log (time1);
 		if (timeLeft < 0.0f) {
