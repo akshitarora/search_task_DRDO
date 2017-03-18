@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class timer : MonoBehaviour {
 
 	public int subject;
-	public float totalTime = 5.0f;
+	public float totalTime = 1800.0f;
 	public float timeLeft;
 
 	IEnumerator Requests_accept (string c, string toc, string comm) {

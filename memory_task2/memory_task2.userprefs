@@ -1,6 +1,31 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\!Scripts\game_over.cs">
+    <Files>
+      <File FileName="Assets\!Scripts\timer.cs" Line="29" Column="47" />
+      <File FileName="Assets\!Scripts\game_over.cs" Line="34" Column="21" />
+      <File FileName="Assets\!Scripts\button_handler.cs" Line="21" Column="43" />
+      <File FileName="Assets\!Scripts\accelerometer_log.cs" Line="23" Column="18" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="memory_task2" expanded="True">
+            <Node name="Assembly-CSharp" expanded="True">
+              <Node name="!Scripts" expanded="True">
+                <Node name="game_over.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
+        <State name="__root__">
+          <Node name="memory_task2" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
