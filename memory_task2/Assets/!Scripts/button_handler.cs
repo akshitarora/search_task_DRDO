@@ -1,51 +1,38 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Vuforia;
 using System;
 using System.Globalization;
 
 public class button_handler : MonoBehaviour, IVirtualButtonEventHandler {
 
-	//declaring game object
+	Text text;
 	GameObject vbutton;
-	//declaring gamer's ID
-	//transferring this task to timer.cs
-//	int subject;
-
 	timer timer;
 
-	//can use defining Requests_accept only once, either here or Requests_accept.
 	IEnumerator Requests_accept (string c, string toc, string comm) {
 		float time1 = (timer.totalTime - timer.timeLeft);
 		string url = "http://akshit.acslab.org/unity/accept.php?c=" + c + "&s=" + timer.subject + "&toc=" + toc + " " + time1 + "&comm=" + comm;
 		Debug.Log (url);
-
 		WWW www = new WWW (url);
 		yield return www;
-
 		string html = www.text;
 		Debug.Log (html);
+		text.text = "";
 	}
 
 	void Start () {
+		text = GameObject.FindGameObjectWithTag("capture").GetComponent<Text> () as Text;
 		timer = GetComponentInParent<timer> ();
-		//setting up ID of the person
-		//task transfer to timer.cs
-//		subject = Convert.ToInt16(UnityEngine.Random.value * 10000);
-		//initializing game object vbutton to the game object this component (script) is attached to
-		vbutton = gameObject;
-		//registering event handler with the virtualbuttonbehavior component of VirtualButton
-		vbutton.GetComponentInChildren<VirtualButtonBehaviour> ().RegisterEventHandler (this);
-		//sending a marker to server that memory task has started
-
-		//incorporating this task to timer.cs to avoid multiple entries for 'starting up!'
-//		string localDate1 = DateTime.Now.ToString();
-//		StartCoroutine (Requests_accept("GAME_INITIALIZED", localDate1, "starting up!"));
+		vbutton = gameObject; 		//initializing game object vbutton to the game object this component (script) is attached to
+		vbutton.GetComponentInChildren<VirtualButtonBehaviour> ().RegisterEventHandler (this); //registering event handler with the virtualbuttonbehavior component of VirtualButton
 	}
 		
 	public void OnButtonPressed (VirtualButtonAbstractBehaviour vb) {
 		Debug.Log ("Button Down!");
+		text.text = "<color=lime>CAPTURED!</color>";
 	}
 
 	public void OnButtonReleased (VirtualButtonAbstractBehaviour vb) {
@@ -60,7 +47,6 @@ public class button_handler : MonoBehaviour, IVirtualButtonEventHandler {
 			Debug.Log ("You have captured: " + capture + " at:" + localDate);
 			frame.SetActive (false);
 			button.GetComponent<VirtualButtonBehaviour> ().VirtualButton.SetEnabled (false);
-			//start the procedure for website reporting.
 			StartCoroutine (Requests_accept(capture, localDate, "captured"));
 		}
 	}

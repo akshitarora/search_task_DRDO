@@ -4,41 +4,37 @@ using UnityEngine;
 using System;
 using System.Globalization;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class timer : MonoBehaviour {
 
 	public int subject;
 	public float totalTime = 1800.0f;
 	public float timeLeft;
+	public Text text;
 
 	IEnumerator Requests_accept (string c, string toc, string comm) {
 		float time1 = totalTime - timeLeft;
 		string url = "http://akshit.acslab.org/unity/accept.php?c=" + c + "&s=" + subject + "&toc=" + toc + " " + (time1) + "&comm=" + comm;
 		Debug.Log (url);
-
 		WWW www = new WWW (url);
 		yield return www;
-
 		string html = www.text;
 		Debug.Log (html);
 	}
 
-	// Use this for initialization
 	void Start () {
+		subject = GameObject.FindGameObjectWithTag ("acc").GetComponent<accelerometer_log> ().subject;
 		timeLeft = totalTime;
 		string localDate1 = DateTime.Now.ToString();
-		subject = Convert.ToInt16(UnityEngine.Random.value * 10000);
 		StartCoroutine (Requests_accept("GAME_INITIALIZED", localDate1, "starting up!"));
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 		timeLeft -= Time.deltaTime;	
 		float time1 = totalTime - timeLeft;
-		Debug.Log (time1);
-		if (timeLeft < 0.0f) {
-			//string localDate1 = DateTime.Now.ToString();
-			//StartCoroutine (Requests_accept("GAME_OVER", localDate1, "Game over!"));
+		text.text = "Time Elapsed:" + time1.ToString ();
+		if (timeLeft < 0.0f || Input.GetMouseButtonDown(0)) { //in case I interrupt it through mouse, or the time runs out!
 			Debug.Log ("Game over!");
 			SceneManager.LoadSceneAsync ("!Scenes/2");
 			Debug.Log ("Scene changed");

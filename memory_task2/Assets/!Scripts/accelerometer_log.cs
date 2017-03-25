@@ -15,51 +15,42 @@ public class acc {
 
 public class accelerometer_log : MonoBehaviour {
 
+	public int subject;
 	public Scene scene;
 	public string json_acc;
 	public string acc_final;
 	public float interval = 0.5f;
 
-	void AccToJson()
-	{
+	void AccToJson() {
 		acc acc_log = new acc();
-
 		acc_log.x = Input.acceleration.x.ToString();
 		acc_log.y  = Input.acceleration.y.ToString();
 		acc_log.z = Input.acceleration.z.ToString();
-//		acc_log.x = "hax";
-//		acc_log.y  = "hay";
-//		acc_log.z = "haz";
 		acc_log.log = DateTime.Now;
-
 		json_acc = JsonMapper.ToJson(acc_log);
-
-		//Debug.Log (json_acc);
 	}
 
 
 	void Awake() {
-		DontDestroyOnLoad(gameObject);
+		DontDestroyOnLoad(gameObject); //because we do not want the accelerometer values to be destroyed as we transition from one scene to another
+		subject = Convert.ToInt16(UnityEngine.Random.value * 10000);
 	}
 
-	// Use this for initialization
 	void Start () {
 		scene = SceneManager.GetActiveScene ();
 		if (scene.name == "1") {
 			Debug.Log ("accelerometer log started!");
 			AccToJson ();
-			acc_final = json_acc;
+			acc_final = "[" + json_acc;
 		}
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 		scene = SceneManager.GetActiveScene ();
 		interval -= Time.deltaTime;
 		if (scene.name == "1" && interval < 0.0f) {
 			AccToJson ();
-			acc_final = acc_final + "\r\n" + json_acc;
-			Debug.Log (acc_final);
+			acc_final = acc_final + ", \r\n" + json_acc;
 			interval = 0.5f;
 		}
 	}
