@@ -19,7 +19,7 @@ else
 	$comments = $_POST["comm"];
 
 if($comments == "captured"){
-	if($capture == "13_thermal" || $capture == "14" || $capture == "45" || $capture == "test") {
+	if($capture == "13_thermal" || $capture == "4_C4" || $capture == "45" || $capture == "test" || $capture == "20_NGIAma") {
 		$comments = "Correct Capture! (" . $capture . ")";
 		$capture = 1;
 	}
