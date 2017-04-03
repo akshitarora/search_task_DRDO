@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="cp5" size="3.000000 1.910526" />
+    <ImageTarget name="room" size="3.000000 2.000000" />
+    <ImageTarget name="rose2" size="3.000000 1.876667" />
+    <ImageTarget name="pencils" size="3.000000 2.000000" />
+    <ImageTarget name="keepitopen" size="3.000000 4.370149" />
+    <ImageTarget name="art8" size="3.000000 1.435862" />
+    <ImageTarget name="art7" size="3.000000 2.007692" />
+    <ImageTarget name="art6" size="3.000000 1.800000" />
+    <ImageTarget name="art4" size="3.000000 1.875000" />
+    <ImageTarget name="art2" size="3.000000 2.000000" />
+    <ImageTarget name="art10" size="3.000000 2.004000" />
+    <ImageTarget name="art9" size="3.000000 2.007692" />
+    <ImageTarget name="cp3" size="3.000000 1.687500" />
+    <ImageTarget name="cars" size="3.000000 4.500000" />
+    <ImageTarget name="fringe" size="3.000000 1.874134" />
+    <ImageTarget name="art5" size="3.000000 1.875000" />
+    <ImageTarget name="minions2" size="3.000000 4.492868" />
+    <ImageTarget name="nemo" size="3.000000 4.440177" />
+    <ImageTarget name="agents" size="3.000000 1.687500" />
+    <ImageTarget name="rayban" size="3.000000 4.002000" />
+  </Tracking>
+</QCARConfig>

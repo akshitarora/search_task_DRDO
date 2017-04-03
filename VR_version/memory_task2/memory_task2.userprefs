@@ -1,0 +1,14 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\!Scripts\timer.cs">
+    <Files>
+      <File FileName="Assets\!Scripts\timer.cs" Line="18" Column="135" />
+      <File FileName="Assets\!Scripts\game_over.cs" Line="25" Column="33" />
+      <File FileName="Assets\!Scripts\accelerometer_log.cs" Line="45" Column="4" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
