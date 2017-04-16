@@ -1,11 +1,11 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\!Scripts\game_over.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\!Scripts\button_handler.cs">
     <Files>
-      <File FileName="Assets\!Scripts\timer.cs" Line="18" Column="135" />
-      <File FileName="Assets\!Scripts\accelerometer_log.cs" Line="39" Column="17" />
-      <File FileName="Assets\!Scripts\game_over.cs" Line="49" Column="119" />
-      <File FileName="Assets\!Scripts\button_handler.cs" Line="26" Column="100" />
+      <File FileName="Assets\!Scripts\accelerometer_log.cs" Line="24" Column="20" />
+      <File FileName="Assets\!Scripts\timer.cs" Line="35" Column="20" />
+      <File FileName="Assets\!Scripts\game_over.cs" Line="53" Column="21" />
+      <File FileName="Assets\!Scripts\button_handler.cs" Line="33" Column="20" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

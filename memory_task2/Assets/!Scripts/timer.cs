@@ -5,6 +5,7 @@ using System;
 using System.Globalization;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.IO;
 
 public class timer : MonoBehaviour {
 
@@ -16,6 +17,17 @@ public class timer : MonoBehaviour {
 	IEnumerator Requests_accept (string c, string toc, string comm) {
 		float time1 = totalTime - timeLeft;
 		string url = "http://akshit.acslab.org/unity/accept.php?c=" + c + "&s=" + subject + "&toc=" + toc + " " + (time1) + "&comm=" + comm;
+		string aa = "\n" + c + " , " + subject + " , " + toc + " , " + (time1) + " , "+ comm + "\n";
+		if (Application.platform != RuntimePlatform.Android) {
+			using(System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\akshi\Desktop\logs_memory.txt", true)) { 
+				file.WriteLine(aa);
+			}
+		} 
+		else {
+			using(System.IO.StreamWriter file = new System.IO.StreamWriter(Application.persistentDataPath + @"/logs_memory.txt", true)) {
+				file.WriteLine(aa);
+			} 
+		}
 		Debug.Log (url);
 		WWW www = new WWW (url);
 		yield return www;

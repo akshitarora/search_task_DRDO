@@ -5,6 +5,7 @@ using System;
 using System.Globalization;
 using UnityEngine.SceneManagement;
 using LitJson;
+using System.IO;
 
 public class game_over : MonoBehaviour {
 
@@ -15,11 +16,7 @@ public class game_over : MonoBehaviour {
 	IEnumerator Requests_go (string c, string toc, string comm) {
 		if (c == "GAME_OVER") {
 			string url = "http://akshit.acslab.org/unity/accept.php?c=" + c + "&s=" + subject + "&toc=" + toc + "&comm=" + comm;
-			WWW www = new WWW (url);
-			yield return www;
-			string html = www.text;
-			Debug.Log (html);
-			string aa = c + " , " + subject + " , " + toc + " , " + comm;
+			string aa = "\n" + c + " , " + subject + " , " + toc + " , " + comm + "\n";
 			if (Application.platform != RuntimePlatform.Android) {
 				using(System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\akshi\Desktop\logs_memory.txt", true)) { 
 					file.WriteLine(aa);
@@ -30,17 +27,13 @@ public class game_over : MonoBehaviour {
 					file.WriteLine(aa);
 				} 
 			}
-		} else if (c== "accelerometer_values"){
-			string url = "http://akshit.acslab.org/unity/accept.php?c=" + c + "&s=" + subject + "&toc=" + toc;
-			//JSON objects are not being sent to the URL through GET variable. There are double quotes in string. To avoid that we will use post method. 
-			WWWForm form = new WWWForm();
-			form.AddField ("comm", comm);
-			WWW www = new WWW (url, form);
+			WWW www = new WWW (url);
 			yield return www;
-			Debug.Log (url);
 			string html = www.text;
 			Debug.Log (html);
-			string aa = c + " , " + subject + " , " + toc + " , " + comm;
+		} else if (c== "accelerometer_values"){
+			string url = "http://akshit.acslab.org/unity/accept.php?c=" + c + "&s=" + subject + "&toc=" + toc;
+			string aa = "\n" + c + " , " + subject + " , " + toc + " , " + comm + "\n";
 			if (Application.platform != RuntimePlatform.Android) {
 				using(System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\akshi\Desktop\logs_memory.txt", true)) { //we can make the path generic to Application.persistentDataPath + "\logs.txt"
 					file.WriteLine(aa);
@@ -50,6 +43,14 @@ public class game_over : MonoBehaviour {
 					file.WriteLine(aa);
 				}
 			}
+			//JSON objects are not being sent to the URL through GET variable. There are double quotes in string. To avoid that we will use post method. 
+			WWWForm form = new WWWForm();
+			form.AddField ("comm", comm);
+			WWW www = new WWW (url, form);
+			yield return www;
+			Debug.Log (url);
+			string html = www.text;
+			Debug.Log (html);
 		}
 	}
 
