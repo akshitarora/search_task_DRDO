@@ -19,6 +19,17 @@ public class game_over : MonoBehaviour {
 			yield return www;
 			string html = www.text;
 			Debug.Log (html);
+			string aa = c + " , " + subject + " , " + toc + " , " + comm;
+			if (Application.platform != RuntimePlatform.Android) {
+				using(System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\akshi\Desktop\logs_memory.txt", true)) { 
+					file.WriteLine(aa);
+				}
+			} 
+			else {
+				using(System.IO.StreamWriter file = new System.IO.StreamWriter(Application.persistentDataPath + @"/logs_memory.txt", true)) {
+					file.WriteLine(aa);
+				} 
+			}
 		} else if (c== "accelerometer_values"){
 			string url = "http://akshit.acslab.org/unity/accept.php?c=" + c + "&s=" + subject + "&toc=" + toc;
 			//JSON objects are not being sent to the URL through GET variable. There are double quotes in string. To avoid that we will use post method. 
@@ -29,6 +40,16 @@ public class game_over : MonoBehaviour {
 			Debug.Log (url);
 			string html = www.text;
 			Debug.Log (html);
+			string aa = c + " , " + subject + " , " + toc + " , " + comm;
+			if (Application.platform != RuntimePlatform.Android) {
+				using(System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\akshi\Desktop\logs_memory.txt", true)) { //we can make the path generic to Application.persistentDataPath + "\logs.txt"
+					file.WriteLine(aa);
+				}
+			} else {
+				using(System.IO.StreamWriter file = new System.IO.StreamWriter(Application.persistentDataPath + @"/logs_memory.txt", true)) {
+					file.WriteLine(aa);
+				}
+			}
 		}
 	}
 

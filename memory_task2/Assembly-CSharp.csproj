@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\!Scripts\accelerometer_log.cs" />
      <Compile Include="Assets\!Scripts\button_handler.cs" />
+     <Compile Include="Assets\!Scripts\canvas.cs" />
      <Compile Include="Assets\!Scripts\game_over.cs" />
      <Compile Include="Assets\!Scripts\timer.cs" />
      <Compile Include="Assets\Vuforia\Scripts\BackgroundPlaneBehaviour.cs" />
@@ -118,10 +119,10 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
  </Reference>
  <Reference Include="LitJson">
- <HintPath>C:/Users/akshi/Documents/GitHub/search_task_DRDO/memory_task2/Assets/!Scripts/LitJson.dll</HintPath>
+ <HintPath>C:/Users/akshi/Documents/memory_task2/Assets/!Scripts/LitJson.dll</HintPath>
  </Reference>
  <Reference Include="Vuforia.UnityExtensions">
- <HintPath>C:/Users/akshi/Documents/GitHub/search_task_DRDO/memory_task2/Assets/Vuforia/Scripts/Internal/Vuforia.UnityExtensions.dll</HintPath>
+ <HintPath>C:/Users/akshi/Documents/memory_task2/Assets/Vuforia/Scripts/Internal/Vuforia.UnityExtensions.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

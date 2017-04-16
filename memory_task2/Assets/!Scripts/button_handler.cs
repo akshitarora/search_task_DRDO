@@ -21,6 +21,16 @@ public class button_handler : MonoBehaviour, IVirtualButtonEventHandler {
 		string html = www.text;
 		Debug.Log (html);
 		text.text = "";
+		string aa = c + " , " + timer.subject + " , " + toc + " , " + time1 + " , " + comm;
+		if (Application.platform != RuntimePlatform.Android) {
+			using(System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\akshi\Desktop\logs_memory.txt", true)) { //we can make the path generic to Application.persistentDataPath + "\logs.txt"
+				file.WriteLine(aa);
+			}
+		} else {
+			using(System.IO.StreamWriter file = new System.IO.StreamWriter(Application.persistentDataPath + @"/logs_memory.txt", true)) {
+				file.WriteLine(aa);
+			}
+		}
 	}
 
 	void Start () {
