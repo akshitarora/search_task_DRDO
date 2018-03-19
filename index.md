@@ -10,7 +10,7 @@ AR is a technique that enables the users to interact with their physical environ
 
 During the course of internship, two projects were carried out:
 - To test a person’s memory power under different cognitive loading conditions. My part in the project was to develop a specific loading condition that corresponds to AR (HMD based video see-through solution). {Refer to Demo Link 1}
-- To make a first person shooter (FPS) game in AR. (Incomplete). {Refer to Demo Link 2}
+- To make a first person shooter (FPS) game in AR. (Incomplete - [GitHub link](https://github.com/aroraakshit/operation_task_DRDO)). {Refer to Demo Link 2}
 
 # Collaborators
 Akash Rao, Ph.D. student at Indian Institute of Technology (IIT) Mandi and Research Scientist at [DRDO, New Delhi](https://www.drdo.gov.in/) [<i class="fab fa-linkedin-in"></i>](https://www.linkedin.com/in/akash-k-rao-b606062a/)
